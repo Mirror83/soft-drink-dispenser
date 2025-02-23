@@ -26,7 +26,7 @@ jobs:
       - name: Extract Godot 4.3 binary
         run: |
           unzip godot_4.3.zip
-          mv Godot_v4.3-stable_linux.x86_64.zip godot
+          mv Godot_v4.3-stable_linux.x86_64 godot
 
       - name: Move to Godot project directory
         run: mv godot simulation && cd simulation
