@@ -1,0 +1,159 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkmpkurachljv"]
+
+[ext_resource type="PackedScene" uid="uid://crjhykj3mhsus" path="res://scenes/currency_button.tscn" id="1_kqwn7"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_qe6t5"]
+[ext_resource type="PackedScene" uid="uid://56vl48ou03bq" path="res://scenes/drink_button.tscn" id="3_mmaht"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_qe6t5")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1148.0
+offset_bottom = 640.0
+
+[node name="Background" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.0974274, 0.298143, 0.386759, 1)
+
+[node name="Buttons" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -410.0
+offset_top = -185.0
+offset_right = -63.0
+offset_bottom = 185.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 32
+
+[node name="CoinsGroup" type="VBoxContainer" parent="Control/Buttons"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/Buttons/CoinsGroup"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Coins"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Buttons/CoinsGroup"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Ten" parent="Control/Buttons/CoinsGroup/HBoxContainer" instance=ExtResource("1_kqwn7")]
+layout_mode = 2
+
+[node name="Twenty" parent="Control/Buttons/CoinsGroup/HBoxContainer" instance=ExtResource("1_kqwn7")]
+layout_mode = 2
+text = "20"
+value = 20
+
+[node name="Fourty" parent="Control/Buttons/CoinsGroup/HBoxContainer" instance=ExtResource("1_kqwn7")]
+layout_mode = 2
+text = "40"
+value = 40
+
+[node name="NotesGroup" type="VBoxContainer" parent="Control/Buttons"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/Buttons/NotesGroup"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Notes"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Buttons/NotesGroup"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Fifty" parent="Control/Buttons/NotesGroup/HBoxContainer" instance=ExtResource("1_kqwn7")]
+layout_mode = 2
+text = "50"
+value = 50
+
+[node name="OneHundred" parent="Control/Buttons/NotesGroup/HBoxContainer" instance=ExtResource("1_kqwn7")]
+layout_mode = 2
+text = "100"
+value = 100
+
+[node name="TwoHundred" parent="Control/Buttons/NotesGroup/HBoxContainer" instance=ExtResource("1_kqwn7")]
+layout_mode = 2
+text = "200"
+value = 200
+
+[node name="FiveHundred" parent="Control/Buttons/NotesGroup/HBoxContainer" instance=ExtResource("1_kqwn7")]
+layout_mode = 2
+text = "500"
+value = 500
+
+[node name="OneThousand" parent="Control/Buttons/NotesGroup/HBoxContainer" instance=ExtResource("1_kqwn7")]
+layout_mode = 2
+text = "1000"
+value = 1000
+
+[node name="Drinks" type="VBoxContainer" parent="Control/Buttons"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/Buttons/Drinks"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Drinks"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Buttons/Drinks"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="DrinkButton" parent="Control/Buttons/Drinks/HBoxContainer" instance=ExtResource("3_mmaht")]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+visible = false
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="PopupPanel" type="PopupPanel" parent="Control/PanelContainer"]
+initial_position = 1
+size = Vector2i(300, 100)
+borderless = false
+always_on_top = true
+
+[node name="Label" type="Label" parent="Control/PanelContainer/PopupPanel"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 296.0
+offset_bottom = 96.0
+text = "You can buy a drink now!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AutomatonStateInfo" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 64.0
+offset_top = -80.0
+offset_right = 506.0
+offset_bottom = 78.0
+grow_vertical = 2
+
+[node name="CurrentState" type="Label" parent="Control/AutomatonStateInfo"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 63
+text = "Current State: "
+
+[node name="Balance" type="Label" parent="Control/AutomatonStateInfo"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Balance: "
+
+[connection signal="popup_hide" from="Control/PanelContainer/PopupPanel" to="." method="_on_popup_panel_popup_hide"]
