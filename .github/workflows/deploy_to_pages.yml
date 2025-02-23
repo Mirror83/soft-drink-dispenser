@@ -28,11 +28,14 @@ jobs:
           unzip godot_4.3.zip
           mv Godot_v4.3-stable_linux.x86_64 godot
 
+      - name: List contents of current directory
+        run: ls
+
       - name: Move to Godot project directory
-        run: mv godot simulation && cd simulation
+        run: cd simulation
 
       - name: Export project for Web (Build static files)
-        run: ./godot --headless --export-release "Web" export/index.html
+        run: ../godot --headless --export-release "Web" export/index.html
 
       - name: Upload static files as artifact
         id: deployment
