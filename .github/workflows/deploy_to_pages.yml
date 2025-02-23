@@ -3,9 +3,9 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the "simulation" branch
   push:
-    branches: [ "simulation" ]
+    branches: ["simulation"]
   pull_request:
-    branches: [ "simulation" ]
+    branches: ["simulation"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -19,6 +19,9 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
+
+      - name: Create Godot export templates directory
+        run: mkdir -p ~/.local/share/godot/export_templates/
 
       - name: Download Godot 4.3
         run: wget -O godot_4.3.zip https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
