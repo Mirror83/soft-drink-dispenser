@@ -23,6 +23,12 @@ jobs:
       - name: Download Godot 4.3
         run: wget -O godot_4.3.zip https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
 
+      - name: Set-up Godot 4.3 export templates
+        run: |
+          wget -O export_templates.tpz https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_export_templates.tpz
+          unzip export_templates.tpz -d ~/.local/share/godot/export_templates/
+          mv ~/.local/share/godot/export_templates/templates ~/.local/share/godot/export_templates/4.3.stable
+
       - name: Extract Godot 4.3 binary
         run: |
           unzip godot_4.3.zip
