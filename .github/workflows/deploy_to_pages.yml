@@ -31,17 +31,18 @@ jobs:
       - name: List contents of current directory
         run: ls
 
-      - name: Move to Godot project directory
-        run: cd simulation
+      - name: Create output directory
+        run: mkdir simulation/export
 
       - name: Export project for Web (Build static files)
-        run: ../godot --headless --export-release "Web" export/index.html
+        run: |
+          ./godot --path simulation --headless --verbose --no-header --export-release "Web" export/index.html
 
       - name: Upload static files as artifact
         id: deployment
         uses: actions/upload-pages-artifact@v3
         with:
-          path: export/
+          path: simulation/export/
 
   deploy:
     environment:
