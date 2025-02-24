@@ -10,7 +10,7 @@ script = ExtResource("1_qe6t5")
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1148.0
+offset_right = 1152.0
 offset_bottom = 640.0
 
 [node name="Background" type="ColorRect" parent="Control"]
