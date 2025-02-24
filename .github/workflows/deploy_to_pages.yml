@@ -51,9 +51,15 @@ jobs:
           path: simulation/export/
 
   deploy:
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      pages: write # Grants permission to deploy to GitHub Pages
+      id-token: write # To verify that the deployment originates from an appropriate source
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+
     runs-on: ubuntu-latest
     needs: build
     steps:
