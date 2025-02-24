@@ -37,9 +37,6 @@ jobs:
           unzip godot_4.3.zip
           mv Godot_v4.3-stable_linux.x86_64 godot
 
-      - name: List contents of current directory
-        run: ls
-
       - name: Create output directory
         run: mkdir simulation/export
 
