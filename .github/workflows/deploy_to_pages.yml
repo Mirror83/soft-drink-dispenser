@@ -1,4 +1,4 @@
-name: CI
+name: Deploy automaton simulation to GitHub Pages
 
 on:
   # Triggers the workflow on push or pull request events but only for the "simulation" branch
@@ -11,8 +11,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  # This workflow contains a two jobs "build", and "deploy". The build job prepares the static assets required
-  # and the deploy job deploys them to GitHub Pages
+  # This workflow contains two jobs "build", and "deploy". The "build" job prepares the static assets required
+  # and the "deploy" job deploys them to GitHub Pages
   build:
     runs-on: ubuntu-latest
 
