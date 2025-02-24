@@ -9,7 +9,10 @@ var can_buy_drink := false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	_center_gui_elements()
+	
 	_update_state_text(automaton.current_state, -SoftDrinkAutomaton.DRINK_COST)
+	
 	var buttons = get_tree().get_nodes_in_group("CurrencyButtons")
 	for button: CurrencyButton in buttons:
 		button.currency_pressed.connect(_handle_currency_button_press)
@@ -61,3 +64,10 @@ func _update_state_text(state: int, balance: int):
 	balance_text = "Balance: %d" % balance
 	
 	$Control/AutomatonStateInfo/Balance.text = balance_text
+	
+func _center_gui_elements():
+	var screen_coordinates = get_viewport_rect().size
+	var control_size = $Control.size
+	$Control.position = Vector2(
+		screen_coordinates.x / 2 - position.x / 2 - control_size.x / 2, 
+		screen_coordinates.y / 2 - position.y / 2 - control_size.y / 2)
