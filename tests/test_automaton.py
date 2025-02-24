@@ -1,4 +1,4 @@
-from soft_drink_automaton import SoftDrinkAutomaton, Currency, SoftDrinks
+from src.soft_drink_automaton import SoftDrinkAutomaton, Currency, SoftDrinks
 
 class TestSoftDrinkAutomaton:
     automaton = SoftDrinkAutomaton()
